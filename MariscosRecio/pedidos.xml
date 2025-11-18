@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pedidos>
+	<pedido idCliente="1" idEmpleado="1" idPedido="1">
+		<productos>
+			<producto cantidad="10" idProducto="1" nombre="Gambas Blancas" />
+			<producto cantidad="5" idProducto="2" nombre="Cigalas" />
+			<producto cantidad="5" idProducto="4" nombre="Mejillones" />
+		</productos>
+		<fecha>2025-11-10</fecha>
+		<precio_total>310.0</precio_total>
+		<entregado>true</entregado>
+	</pedido>
+	<pedido idCliente="2" idEmpleado="2" idPedido="2">
+		<productos>
+			<producto cantidad="6" idProducto="3" nombre="Pulpo Gallego" />
+		</productos>
+		<fecha>2025-11-11</fecha>
+		<precio_total>150.5</precio_total>
+		<entregado>false</entregado>
+	</pedido>
+	<pedido idCliente="3" idEmpleado="1" idPedido="3">
+		<productos>
+			<producto cantidad="3" idProducto="1" nombre="Gambas Blancas" />
+			<producto cantidad="10" idProducto="5" nombre="Navajas" />
+		</productos>
+		<fecha>2025-11-12</fecha>
+		<precio_total>222.3</precio_total>
+		<entregado>true</entregado>
+	</pedido>
+	<pedido idCliente="4" idEmpleado="3" idPedido="4">
+		<productos>
+			<producto cantidad="5" idProducto="4" nombre="Mejillones" />
+		</productos>
+		<fecha>2025-11-12</fecha>
+		<precio_total>45.0</precio_total>
+		<entregado>false</entregado>
+	</pedido>
+	<pedido idCliente="5" idEmpleado="2" idPedido="5">
+		<productos>
+			<producto cantidad="3" idProducto="2" nombre="Cigalas" />
+			<producto cantidad="4" idProducto="5" nombre="Navajas" />
+		</productos>
+		<fecha>2025-11-13</fecha>
+		<precio_total>160.0</precio_total>
+		<entregado>false</entregado>
+	</pedido>
+</pedidos>
