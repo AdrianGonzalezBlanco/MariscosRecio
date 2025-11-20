@@ -1,0 +1,137 @@
+﻿<Window x:Class="MariscosRecioAPK.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Mariscos Recio - Gestión" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F8FF">
+
+    <!-- RECURSOS: Estilos de botones mejorados -->
+    <Window.Resources>
+        <!-- ESTILO BASE: El Trigger se ha movido aquí para permitir la sobrescritura -->
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#E0F7FA"/>
+            <!-- Texto casi blanco (Cyan muy claro) -->
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="10,5,10,5"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <!-- El Border ahora usa TemplateBinding Background, que el Trigger externo puede cambiar -->
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10" Padding="15,0,0,0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </Border>
+                        <!-- Se eliminó el ControlTemplate.Triggers interno para corregir el conflicto -->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <!-- Trigger por defecto para los botones normales (Clientes, Almacén, Pedidos) -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#00838F"/>
+                    <!-- Azul Turquesa suave -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <!-- LAYOUT PRINCIPAL -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- BARRA LATERAL: Azul Océano Profundo -->
+        <Border Grid.Column="0">
+            <!-- Efecto de degradado sutil para darle profundidad -->
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#006064" Offset="0.0"/>
+                    <GradientStop Color="#004D40" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+
+                <!-- Título / Logo -->
+                <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <!-- Icono de pez o marisco (simulado con texto por ahora) -->
+                    <TextBlock Text="🐟" FontSize="30" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <TextBlock Text="MARISCOS RECIO" Foreground="White" FontSize="22" FontFamily="Segoe UI Black" HorizontalAlignment="Center"/>
+                    <TextBlock Text="El mar al mejor precio" Foreground="#80DEEA" FontSize="13" FontStyle="Italic" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <!-- Menú -->
+                <StackPanel Grid.Row="1" Margin="0,20,0,0">
+                    <Button Content="👥  Clientes" Style="{StaticResource MenuButtonStyle}" Click="BtnClientes_Click"/>
+                    <Button Content="📦  Almacén" Style="{StaticResource MenuButtonStyle}" Click="BtnAlmacen_Click"/>
+                    <Button Content="📝  Pedidos" Style="{StaticResource MenuButtonStyle}" Click="BtnPedidos_Click"/>
+                </StackPanel>
+
+                <!-- Botón Salir: Tono Coral Suave -->
+                <Button Grid.Row="2" Content="🚪  Cerrar" Margin="10,0,10,20" Click="BtnSalir_Click">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MenuButtonStyle}">
+                            <Style.Triggers>
+                                <!-- ESTE TRIGGER AHORA FUNCIONA Y SOBRESCRIBE EL COLOR BASE -->
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF8A80"/>
+                                    <!-- Rojo Coral suave al pasar el ratón -->
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- CONTENIDO: Fondo claro y limpio -->
+        <Border Grid.Column="1" Padding="30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Título de sección con color Azul Grisáceo (Elegante) -->
+                <TextBlock x:Name="txtTituloSeccion" Text="Panel de Control" 
+                           FontSize="32" FontWeight="Light" FontFamily="Segoe UI" 
+                           Foreground="#37474F"/>
+
+                <!-- Contenedor dinámico con sombra suave -->
+                <Border Grid.Row="1" Margin="0,25,0,0" Background="White" CornerRadius="15">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#B0BEC5" Direction="270" ShadowDepth="3" BlurRadius="15" Opacity="0.4"/>
+                    </Border.Effect>
+                    
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <!-- LA IMAGEN DE TU EMPRESA VA AQUÍ -->
+                        <Image Source="/Resources/logo_empresa.png" 
+                               Margin="0,0,0,10" Opacity="1" Stretch="Fill" StretchDirection="DownOnly"/>
+                        <!-- FIN DE IMAGEN -->
+                        
+                        <TextBlock Text="Bienvenido" 
+                                   FontSize="20" Foreground="#546E7A" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Seleccione una opción del menú para empezar a facturar." 
+                                   FontSize="14" Foreground="#90A4AE" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
