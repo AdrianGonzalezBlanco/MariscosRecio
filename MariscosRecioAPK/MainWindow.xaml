@@ -8,36 +8,34 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="#F0F8FF">
-
-    <!-- RECURSOS: Estilos de botones mejorados -->
+        
     <Window.Resources>
-        <!-- ESTILO BASE: El Trigger se ha movido aquí para permitir la sobrescritura -->
         <Style x:Key="MenuButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
+
             <Setter Property="Foreground" Value="#E0F7FA"/>
-            <!-- Texto casi blanco (Cyan muy claro) -->
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontFamily" Value="Segoe UI"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
+            
             <Setter Property="Margin" Value="10,5,10,5"/>
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Cursor" Value="Hand"/> <!-- hace que el icono del raton sea la mano -->
+            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <!-- El Border ahora usa TemplateBinding Background, que el Trigger externo puede cambiar -->
-                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10" Padding="15,0,0,0">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10" Padding="70,0,0,0">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </Border>
-                        <!-- Se eliminó el ControlTemplate.Triggers interno para corregir el conflicto -->
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            
             <Style.Triggers>
-                <!-- Trigger por defecto para los botones normales (Clientes, Almacén, Pedidos) -->
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#00838F"/>
-                    <!-- Azul Turquesa suave -->
                 </Trigger>
             </Style.Triggers>
         </Style>
