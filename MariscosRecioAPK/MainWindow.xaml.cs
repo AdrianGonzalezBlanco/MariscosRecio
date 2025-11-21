@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MariscosRecioAPK
+namespace MariscosRecioAdministrator
 {
     public partial class MainWindow : Window
     {
